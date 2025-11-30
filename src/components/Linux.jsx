@@ -319,7 +319,7 @@ fi`}</pre>
                             <code>grep -r "error" /var/log/nginx/</code>
 
                             <div style={{ color: '#888', margin: '1rem 0 0.5rem' }}># Awk (Colonnes)</div>
-                            <code>ps aux | awk '{print $1, $11}'</code>
+                            <code>ps aux | awk {`'{print $1, $11}'`}</code>
                             <span style={{ color: '#666', fontSize: '0.8rem' }}>Affiche seulement l'utilisateur et la commande.</span>
 
                             <div style={{ color: '#888', margin: '1rem 0 0.5rem' }}># Sed (Remplacement)</div>
