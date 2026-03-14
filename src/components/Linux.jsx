@@ -25,7 +25,8 @@ function Linux() {
                         { id: 'sysadmin', label: 'Système & Packages' },
                         { id: 'permissions', label: 'Utilisateurs & Droits' },
                         { id: 'process', label: 'Processus & Services' },
-                        { id: 'network', label: 'Réseau & Sécurité' },
+                        { id: 'network', label: 'Réseau & SSH' },
+                        { id: 'logging', label: 'Logs & Firewall' },
                         { id: 'scripting', label: 'Automation & Scripting' }
                     ].map(tab => (
                         <button
@@ -111,6 +112,9 @@ function Linux() {
                                         <span className="schema-label">/home</span>
                                         <span className="schema-sub">Utilisateurs</span>
                                     </div>
+                                </div>
+                                <div style={{ gridColumn: '1 / -1', marginTop: '1rem', padding: '1rem', background: 'rgba(255,255,255,0.02)', borderRadius: '8px', fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
+                                    <strong>Autres répertoires :</strong> /usr (binaires utilisateur), /opt (logiciels tiers), /tmp (temporaire), /srv (données services), /boot (kernel), /dev (périphériques)
                                 </div>
                             </div>
                         </div>
@@ -262,6 +266,51 @@ function Linux() {
                             <code>ssh-keygen -t ed25519</code> <span style={{ color: '#666' }}># Générer clé</span><br />
                             <code>ssh-copy-id user@host</code> <span style={{ color: '#666' }}># Envoyer clé</span><br />
                             <code>ssh user@host</code> <span style={{ color: '#666' }}># Connexion</span>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {activeTab === 'logging' && (
+                <div className="animate-fade-in">
+                    <div className="card">
+                        <h3>📋 Journalctl - Logs Systemd</h3>
+                        <p>Consulter les logs des services et du système.</p>
+                        <div className="code-block">
+                            <code>journalctl -u nginx</code> <span style={{ color: '#666' }}># Logs du service</span><br />
+                            <code>journalctl -f</code> <span style={{ color: '#666' }}># Suivi en temps réel</span><br />
+                            <code>journalctl -p err</code> <span style={{ color: '#666' }}># Erreurs uniquement</span><br />
+                            <code>journalctl --since "1 hour ago"</code> <span style={{ color: '#666' }}># Dernière heure</span><br />
+                            <code>journalctl -b</code> <span style={{ color: '#666' }}># Depuis le dernier boot</span>
+                        </div>
+                    </div>
+
+                    <div className="card">
+                        <h3>📁 Fichiers de Logs Classiques</h3>
+                        <ul style={{ lineHeight: 2, color: 'var(--text-secondary)' }}>
+                            <li><code>/var/log/syslog</code> — Logs système (Debian)</li>
+                            <li><code>/var/log/messages</code> — Logs système (RHEL)</li>
+                            <li><code>/var/log/nginx/</code> — Logs Nginx</li>
+                            <li><code>/var/log/auth.log</code> — Authentification</li>
+                            <li><code>tail -f /var/log/nginx/access.log</code> — Suivre en direct</li>
+                        </ul>
+                    </div>
+
+                    <div className="card">
+                        <h3>🔥 Firewall - iptables & firewalld</h3>
+                        <div className="grid">
+                            <div className="code-block" style={{ margin: 0 }}>
+                                <div style={{ color: '#888', marginBottom: '0.5rem' }}># firewalld (RHEL/CentOS)</div>
+                                <code>firewall-cmd --list-all</code><br />
+                                <code>firewall-cmd --add-port=8080/tcp --permanent</code><br />
+                                <code>firewall-cmd --reload</code>
+                            </div>
+                            <div className="code-block" style={{ margin: 0 }}>
+                                <div style={{ color: '#888', marginBottom: '0.5rem' }}># ufw (Debian/Ubuntu)</div>
+                                <code>ufw status</code><br />
+                                <code>ufw allow 22/tcp</code><br />
+                                <code>ufw enable</code>
+                            </div>
                         </div>
                     </div>
                 </div>

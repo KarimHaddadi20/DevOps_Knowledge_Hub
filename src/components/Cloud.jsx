@@ -24,7 +24,8 @@ function Cloud() {
             { id: 'concepts', label: 'Concepts Cloud' },
             { id: 'aws', label: 'AWS' },
             { id: 'azure', label: 'Azure' },
-            { id: 'gcp', label: 'GCP' }
+            { id: 'gcp', label: 'GCP' },
+            { id: 'bestpractices', label: 'Bonnes Pratiques' }
           ].map(tab => (
             <button
               key={tab.id}
@@ -229,6 +230,56 @@ function Cloud() {
               <code>gcloud compute instances list</code>
               <code>gcloud container clusters list</code>
               <code>gcloud run services list</code>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {activeTab === 'bestpractices' && (
+        <div className="animate-fade-in">
+          <div className="card">
+            <h3>📊 Comparatif AWS / Azure / GCP</h3>
+            <div className="code-block">
+              <pre>{`| Critère      | AWS           | Azure         | GCP           |
+|--------------|---------------|----------------|---------------|
+| Part de marché | ~32%         | ~22%           | ~10%          |
+| Kubernetes    | EKS           | AKS            | GKE           |
+| Serverless    | Lambda        | Functions      | Cloud Run     |
+| IaC natif    | CloudFormation| ARM/Bicep      | Deployment Mgr|
+| Régions EU   | eu-west-1, etc| West Europe    | europe-west1  |`}</pre>
+            </div>
+          </div>
+
+          <div className="card">
+            <h3>💰 Optimisation des Coûts</h3>
+            <ul style={{ lineHeight: 2, color: 'var(--text-secondary)' }}>
+              <li><strong>Rightsizing</strong> : Adapter la taille des instances à l'usage réel</li>
+              <li><strong>Réserved Instances / Savings Plans</strong> : Réduction 30-70% pour engagement</li>
+              <li><strong>Spot/Preemptible</strong> : Instances à bas prix pour workloads flexibles</li>
+              <li><strong>Auto-scaling</strong> : Éviter le sur-provisionnement</li>
+              <li><strong>Nettoyer</strong> : Volumes orphelins, IP non utilisées, anciens snapshots</li>
+            </ul>
+          </div>
+
+          <div className="card">
+            <h3>✅ Bonnes Pratiques Cloud</h3>
+            <div className="grid">
+              <div style={{ background: 'rgba(16, 185, 129, 0.05)', padding: '1rem', borderRadius: '8px', border: '1px solid rgba(16, 185, 129, 0.2)' }}>
+                <h4 style={{ marginTop: 0, color: '#10b981' }}>Sécurité</h4>
+                <ul style={{ fontSize: '0.9rem', lineHeight: '1.7' }}>
+                  <li>IAM least privilege</li>
+                  <li>Chiffrement au repos</li>
+                  <li>VPC privées</li>
+                </ul>
+              </div>
+              <div style={{ background: 'rgba(56, 189, 248, 0.05)', padding: '1rem', borderRadius: '8px', border: '1px solid rgba(56, 189, 248, 0.2)' }}>
+                <h4 style={{ marginTop: 0, color: '#38bdf8' }}>Résilience</h4>
+                <ul style={{ fontSize: '0.9rem', lineHeight: '1.7' }}>
+                  <li>Multi-AZ</li>
+                  <li>Backups automatisés</li>
+                  <li>Health checks</li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>

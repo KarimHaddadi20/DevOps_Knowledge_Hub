@@ -22,7 +22,8 @@ function Containers() {
         }}>
           {[
             { id: 'docker', label: 'Docker' },
-            { id: 'kubernetes', label: 'Kubernetes' }
+            { id: 'kubernetes', label: 'Kubernetes' },
+            { id: 'helm', label: 'Helm & Avancé' }
           ].map(tab => (
             <button
               key={tab.id}
@@ -244,6 +245,86 @@ metadata:
 type: Opaque
 data:
   password: c2VjcmV0cGFzc3dvcmQ=`}</pre>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {activeTab === 'helm' && (
+        <div className="animate-fade-in">
+          <div className="card">
+            <h3>⎈ Helm - Gestionnaire de Packages K8s</h3>
+            <p>Helm permet de packager des applications Kubernetes (charts) et de les déployer facilement.</p>
+            <div className="code-block">
+              <code>helm repo add bitnami https://charts.bitnami.com/bitnami</code><br />
+              <code>helm install my-nginx bitnami/nginx</code> <span style={{ color: '#666' }}># Installer</span><br />
+              <code>helm upgrade my-nginx bitnami/nginx -f values.yaml</code> <span style={{ color: '#666' }}># Mettre à jour</span><br />
+              <code>helm uninstall my-nginx</code> <span style={{ color: '#666' }}># Désinstaller</span><br />
+              <code>helm list</code> <span style={{ color: '#666' }}># Lister les releases</span>
+            </div>
+          </div>
+
+          <div className="card">
+            <h3>📥 Ingress - Routeur HTTP</h3>
+            <p>Expose les services via HTTP/HTTPS avec routage par hostname ou path.</p>
+            <div className="code-block">
+              <pre>{`apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: myapp-ingress
+  annotations:
+    kubernetes.io/ingress.class: nginx
+spec:
+  rules:
+  - host: app.example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: myapp
+            port:
+              number: 80`}</pre>
+            </div>
+          </div>
+
+          <div className="card">
+            <h3>📈 HPA - Horizontal Pod Autoscaler</h3>
+            <p>Scale automatiquement les pods selon CPU ou métriques custom.</p>
+            <div className="code-block">
+              <pre>{`apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: myapp-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: myapp
+  minReplicas: 2
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 70`}</pre>
+            </div>
+          </div>
+
+          <div className="card">
+            <h3>📦 DaemonSet & StatefulSet</h3>
+            <div className="grid">
+              <div style={{ background: 'rgba(255,255,255,0.03)', padding: '1rem', borderRadius: '8px', border: '1px solid var(--border-subtle)' }}>
+                <h4 style={{ marginTop: 0 }}>DaemonSet</h4>
+                <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', margin: 0 }}>Un pod par nœud (ex: agent monitoring, log collector)</p>
+              </div>
+              <div style={{ background: 'rgba(255,255,255,0.03)', padding: '1rem', borderRadius: '8px', border: '1px solid var(--border-subtle)' }}>
+                <h4 style={{ marginTop: 0 }}>StatefulSet</h4>
+                <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', margin: 0 }}>Pods avec identité stable (ex: bases de données)</p>
+              </div>
             </div>
           </div>
         </div>

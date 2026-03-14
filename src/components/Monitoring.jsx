@@ -23,6 +23,7 @@ function Monitoring() {
           {[
             { id: 'concepts', label: 'Concepts' },
             { id: 'prometheus', label: 'Prometheus' },
+            { id: 'alerting', label: 'AlertManager' },
             { id: 'grafana', label: 'Grafana' },
             { id: 'elk', label: 'ELK Stack' }
           ].map(tab => (
@@ -139,6 +140,51 @@ app.get('/metrics', async (req, res) => {
   res.end(await register.metrics());
 });`}</pre>
             </div>
+          </div>
+        </div>
+      )}
+
+      {activeTab === 'alerting' && (
+        <div className="animate-fade-in">
+          <div className="card">
+            <h3>🔔 AlertManager - Gestion des Alertes</h3>
+            <p>AlertManager reçoit les alertes Prometheus, déduplique, regroupe et envoie les notifications.</p>
+            <div className="code-block">
+              <pre>{`# prometheus.yml - configurer Alertmanager
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets: ['alertmanager:9093']`}</pre>
+            </div>
+          </div>
+
+          <div className="card">
+            <h3>📝 Règles d'Alerte Prometheus</h3>
+            <div className="code-block">
+              <pre>{`# alert_rules.yml
+groups:
+- name: example
+  rules:
+  - alert: HighCPU
+    expr: rate(node_cpu_seconds_total[5m]) > 0.9
+    for: 5m
+    labels:
+      severity: critical
+    annotations:
+      summary: "CPU usage high"
+  - alert: InstanceDown
+    expr: up == 0
+    for: 1m`}</pre>
+            </div>
+          </div>
+
+          <div className="card">
+            <h3>📤 Canaux de Notification</h3>
+            <ul style={{ lineHeight: 2, color: 'var(--text-secondary)' }}>
+              <li>Slack, Discord, Microsoft Teams</li>
+              <li>Email, PagerDuty, Opsgenie</li>
+              <li>Webhook personnalisé</li>
+            </ul>
           </div>
         </div>
       )}

@@ -22,6 +22,7 @@ function CICD() {
         }}>
           {[
             { id: 'concepts', label: 'Concepts CI/CD' },
+            { id: 'strategies', label: 'Stratégies Déploiement' },
             { id: 'jenkins', label: 'Jenkins' },
             { id: 'gitlab', label: 'GitLab CI' },
             { id: 'github', label: 'GitHub Actions' }
@@ -104,6 +105,52 @@ function CICD() {
                   </div>
                 ))}
               </div>
+            </div>
+          </div>
+
+          <div className="card">
+            <h3>🏢 Environnements (Dev, Staging, Prod)</h3>
+            <ul style={{ lineHeight: 2, color: 'var(--text-secondary)' }}>
+              <li><strong>Development</strong> : Développeurs, tests rapides, données fictives</li>
+              <li><strong>Staging</strong> : Pré-production, tests E2E, miroir de prod</li>
+              <li><strong>Production</strong> : Utilisateurs réels, monitoring strict, backups</li>
+            </ul>
+          </div>
+        </div>
+      )}
+
+      {activeTab === 'strategies' && (
+        <div className="animate-fade-in">
+          <div className="card">
+            <h3>🚀 Stratégies de Déploiement Détaillées</h3>
+            <div className="grid">
+              <div style={{ background: 'rgba(56, 189, 248, 0.05)', padding: '1.5rem', borderRadius: '8px', border: '1px solid rgba(56, 189, 248, 0.2)' }}>
+                <h4 style={{ marginTop: 0, color: '#38bdf8' }}>Blue/Green</h4>
+                <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>Deux environnements identiques. Bascule instantanée. Rollback = rebasculer.</p>
+              </div>
+              <div style={{ background: 'rgba(245, 158, 11, 0.05)', padding: '1.5rem', borderRadius: '8px', border: '1px solid rgba(245, 158, 11, 0.2)' }}>
+                <h4 style={{ marginTop: 0, color: '#f59e0b' }}>Canary</h4>
+                <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>5% trafic → 50% → 100%. Détecte les problèmes avant impact total.</p>
+              </div>
+              <div style={{ background: 'rgba(16, 185, 129, 0.05)', padding: '1.5rem', borderRadius: '8px', border: '1px solid rgba(16, 185, 129, 0.2)' }}>
+                <h4 style={{ marginTop: 0, color: '#10b981' }}>Rolling Update</h4>
+                <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>Remplacement instance par instance. Zero-downtime. Défaut K8s.</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="card">
+            <h3>📋 Gestion des Environnements</h3>
+            <p>Variables par environnement, secrets, feature flags.</p>
+            <div className="code-block">
+              <pre>{`# Exemple : variables par environnement
+# .env.development
+API_URL=http://localhost:3000
+DEBUG=true
+
+# .env.production
+API_URL=https://api.example.com
+DEBUG=false`}</pre>
             </div>
           </div>
         </div>

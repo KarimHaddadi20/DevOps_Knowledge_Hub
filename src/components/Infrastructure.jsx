@@ -153,6 +153,37 @@ region         = "eu-west-1"
 instance_type  = "t3.small"`}</pre>
             </div>
           </div>
+
+          <div className="card">
+            <h3>📦 Terraform State & Backend</h3>
+            <p>Le state stocke l'état des ressources. En équipe, utiliser un backend distant (S3, Azure Blob).</p>
+            <div className="code-block">
+              <pre>{`# backend S3 (à mettre dans terraform { })
+terraform {
+  backend "s3" {
+    bucket = "my-terraform-state"
+    key    = "prod/terraform.tfstate"
+    region = "eu-west-1"
+  }
+}`}</pre>
+            </div>
+          </div>
+
+          <div className="card">
+            <h3>🧩 Modules Terraform</h3>
+            <div className="code-block">
+              <pre>{`# Utiliser un module
+module "vpc" {
+  source = "terraform-aws-modules/vpc/aws"
+  version = "5.0.0"
+
+  name = "my-vpc"
+  cidr = "10.0.0.0/16"
+  azs  = ["eu-west-1a", "eu-west-1b"]
+  public_subnets = ["10.0.1.0/24", "10.0.2.0/24"]
+}`}</pre>
+            </div>
+          </div>
         </div>
       )}
 

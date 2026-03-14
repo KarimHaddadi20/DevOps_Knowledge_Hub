@@ -1,13 +1,15 @@
 function Home() {
   const sections = [
-    { id: 'linux', name: 'Linux', icon: '🐧', desc: 'Arborescence FHS, commandes, permissions, systemd, réseau, scripting Bash.' },
-    { id: 'cicd', name: 'CI/CD', icon: '🔄', desc: 'Jenkins, GitLab CI, GitHub Actions - Pipelines et bonnes pratiques.' },
-    { id: 'cloud', name: 'Cloud', icon: '☁️', desc: 'AWS, Azure, GCP - IaaS, PaaS, services essentiels et CLI.' },
-    { id: 'infrastructure', name: 'Infrastructure', icon: '🏗️', desc: 'Terraform, Ansible - Infrastructure as Code.' },
-    { id: 'containers', name: 'Containers', icon: '📦', desc: 'Docker, Kubernetes - Conteneurisation et orchestration.' },
-    { id: 'monitoring', name: 'Monitoring', icon: '📊', desc: 'Prometheus, Grafana, ELK - Métriques, logs, observabilité.' },
-    { id: 'security', name: 'Sécurité', icon: '🔒', desc: 'Secrets, vulnérabilités, DevSecOps et bonnes pratiques.' },
-    { id: 'resources', name: 'Ressources', icon: '📚', desc: 'Documentations, formations, certifications et parcours.' }
+    { id: 'linux', name: 'Linux', icon: '🐧', desc: 'FHS, commandes, permissions, systemd, logs, firewall, scripting Bash.' },
+    { id: 'git', name: 'Git', icon: '📂', desc: 'Branches, merge, rebase, remote, workflows, conventional commits.' },
+    { id: 'cicd', name: 'CI/CD', icon: '🔄', desc: 'Jenkins, GitLab CI, GitHub Actions, stratégies de déploiement.' },
+    { id: 'cloud', name: 'Cloud', icon: '☁️', desc: 'AWS, Azure, GCP - IaaS, PaaS, CLI, optimisation coûts.' },
+    { id: 'infrastructure', name: 'Infrastructure', icon: '🏗️', desc: 'Terraform, Ansible - IaC, state, modules.' },
+    { id: 'network', name: 'Réseau', icon: '🌐', desc: 'DNS, proxy, reverse proxy Nginx, load balancing.' },
+    { id: 'containers', name: 'Containers', icon: '📦', desc: 'Docker, Kubernetes, Helm, Ingress, HPA.' },
+    { id: 'monitoring', name: 'Monitoring', icon: '📊', desc: 'Prometheus, Grafana, AlertManager, ELK, observabilité.' },
+    { id: 'security', name: 'Sécurité', icon: '🔒', desc: 'Secrets, vulnérabilités, RBAC K8s, Network Policies.' },
+    { id: 'resources', name: 'Ressources', icon: '📚', desc: 'Documentations, formations, certifications, glossaire.' }
   ];
 
   return (
@@ -32,12 +34,14 @@ function Home() {
           Si vous débutez, suivez cet ordre recommandé :
         </p>
         <ol style={{ lineHeight: 2, color: 'var(--text-secondary)', paddingLeft: '1.5rem' }}>
-          <li><strong>Linux</strong> — Le socle de tout : système de fichiers, permissions, services</li>
+          <li><strong>Linux</strong> — Le socle : système de fichiers, permissions, services</li>
+          <li><strong>Git</strong> — Contrôle de version et collaboration</li>
           <li><strong>Containers</strong> — Docker pour isoler vos applications</li>
           <li><strong>CI/CD</strong> — Automatiser build, tests et déploiement</li>
           <li><strong>Kubernetes</strong> — Orchestration à l'échelle</li>
           <li><strong>Cloud</strong> — AWS, Azure ou GCP selon votre contexte</li>
           <li><strong>Infrastructure</strong> — Terraform et Ansible pour l'IaC</li>
+          <li><strong>Réseau</strong> — DNS, proxy, load balancing</li>
           <li><strong>Monitoring</strong> — Observabilité et alerting</li>
           <li><strong>Sécurité</strong> — DevSecOps et gestion des secrets</li>
         </ol>

@@ -2,9 +2,11 @@ import { useState } from 'react'
 import './App.css'
 import Home from './components/Home'
 import Linux from './components/Linux'
+import Git from './components/Git'
 import CICD from './components/CICD'
 import Cloud from './components/Cloud'
 import Infrastructure from './components/Infrastructure'
+import Network from './components/Network'
 import Monitoring from './components/Monitoring'
 import Security from './components/Security'
 import Containers from './components/Containers'
@@ -16,9 +18,11 @@ function App() {
   const sections = [
     { id: 'home', name: 'Accueil', icon: '🏠' },
     { id: 'linux', name: 'Linux', icon: '🐧' },
+    { id: 'git', name: 'Git', icon: '📂' },
     { id: 'cicd', name: 'CI/CD', icon: '🔄' },
     { id: 'cloud', name: 'Cloud', icon: '☁️' },
     { id: 'infrastructure', name: 'Infrastructure', icon: '🏗️' },
+    { id: 'network', name: 'Réseau', icon: '🌐' },
     { id: 'containers', name: 'Containers', icon: '📦' },
     { id: 'monitoring', name: 'Monitoring', icon: '📊' },
     { id: 'security', name: 'Sécurité', icon: '🔒' },
@@ -29,9 +33,11 @@ function App() {
     switch(activeSection) {
       case 'home': return <Home />
       case 'linux': return <Linux />
+      case 'git': return <Git />
       case 'cicd': return <CICD />
       case 'cloud': return <Cloud />
       case 'infrastructure': return <Infrastructure />
+      case 'network': return <Network />
       case 'containers': return <Containers />
       case 'monitoring': return <Monitoring />
       case 'security': return <Security />

@@ -105,18 +105,37 @@ function Resources() {
       ))}
 
       <div className="card">
+        <h3>📖 Glossaire DevOps</h3>
+        <div className="code-block" style={{ fontSize: '0.9rem', lineHeight: 1.9 }}>
+          <strong>CI/CD</strong> — Intégration et déploiement continus<br />
+          <strong>IaC</strong> — Infrastructure as Code<br />
+          <strong>FHS</strong> — Filesystem Hierarchy Standard (Linux)<br />
+          <strong>VPC</strong> — Virtual Private Cloud<br />
+          <strong>AZ</strong> — Availability Zone<br />
+          <strong>POD</strong> — Plus petite unité déployable dans K8s<br />
+          <strong>HPA</strong> — Horizontal Pod Autoscaler<br />
+          <strong>RBAC</strong> — Role-Based Access Control<br />
+          <strong>SLO/SLI/SLA</strong> — Objectifs de niveau de service<br />
+          <strong>Blue/Green</strong> — Stratégie de déploiement avec bascule<br />
+          <strong>Canary</strong> — Déploiement progressif<br />
+          <strong>DevSecOps</strong> — Sécurité intégrée au DevOps
+        </div>
+      </div>
+
+      <div className="card">
         <h3>🔄 Parcours Suggéré (Master DevOps)</h3>
         <div className="diagram-container">
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', justifyContent: 'center', alignItems: 'center' }}>
             {[
               { step: 1, label: 'Linux', icon: '🐧' },
-              { step: 2, label: 'Git & Scripting', icon: '📜' },
+              { step: 2, label: 'Git', icon: '📂' },
               { step: 3, label: 'Docker', icon: '🐳' },
               { step: 4, label: 'CI/CD', icon: '🔄' },
               { step: 5, label: 'Kubernetes', icon: '☸️' },
-              { step: 6, label: 'Cloud (AWS/Azure)', icon: '☁️' },
+              { step: 6, label: 'Cloud', icon: '☁️' },
               { step: 7, label: 'Terraform/Ansible', icon: '🏗️' },
-              { step: 8, label: 'Monitoring', icon: '📊' }
+              { step: 8, label: 'Réseau', icon: '🌐' },
+              { step: 9, label: 'Monitoring', icon: '📊' }
             ].map((s, i) => (
               <div key={s.step} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                 <div style={{
@@ -130,7 +149,7 @@ function Resources() {
                   <div style={{ fontSize: '1.5rem' }}>{s.icon}</div>
                   <div style={{ fontSize: '0.85rem', color: 'var(--text-primary)' }}>{s.label}</div>
                 </div>
-                {i < 7 && <span style={{ color: 'var(--text-tertiary)' }}>→</span>}
+                {i < 8 && <span style={{ color: 'var(--text-tertiary)' }}>→</span>}
               </div>
             ))}
           </div>

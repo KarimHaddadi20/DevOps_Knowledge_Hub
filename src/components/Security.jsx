@@ -23,6 +23,7 @@ function Security() {
           {[
             { id: 'secrets', label: 'Secrets' },
             { id: 'vulnerabilities', label: 'Vulnérabilités' },
+            { id: 'kubernetes', label: 'K8s (RBAC, Network)' },
             { id: 'practices', label: 'Bonnes Pratiques' }
           ].map(tab => (
             <button
@@ -158,6 +159,67 @@ deploy:
     image-ref: 'myapp:\${{ github.sha }}'
     exit-code: '1'  # Fail si vulnérabilités critiques
     severity: 'CRITICAL,HIGH'`}</pre>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {activeTab === 'kubernetes' && (
+        <div className="animate-fade-in">
+          <div className="card">
+            <h3>👤 RBAC - Role-Based Access Control</h3>
+            <p>Contrôler qui peut faire quoi dans le cluster Kubernetes.</p>
+            <div className="code-block">
+              <pre>{`# Role : permissions dans un namespace
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: default
+  name: pod-reader
+rules:
+- apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["get", "list", "watch"]
+
+# RoleBinding : lier Role à un utilisateur
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: read-pods
+subjects:
+- kind: User
+  name: dev-user
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: pod-reader
+  apiGroup: rbac.authorization.k8s.io`}</pre>
+            </div>
+          </div>
+
+          <div className="card">
+            <h3>🔒 Network Policies</h3>
+            <p>Isoler les pods au niveau réseau. Par défaut tout est autorisé.</p>
+            <div className="code-block">
+              <pre>{`# Bloquer tout le trafic entrant sauf depuis le frontend
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: api-policy
+spec:
+  podSelector:
+    matchLabels:
+      app: api
+  policyTypes:
+  - Ingress
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app: frontend
+    ports:
+    - protocol: TCP
+      port: 8080`}</pre>
             </div>
           </div>
         </div>
