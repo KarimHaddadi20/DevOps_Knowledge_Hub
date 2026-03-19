@@ -1,16 +1,65 @@
-# React + Vite
+# DevOps Knowledge Hub
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Plateforme de reference pour centraliser les connaissances essentielles en DevOps, Cloud et Infrastructure.
 
-Currently, two official plugins are available:
+## Objectif
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Ce projet aide les etudiants (et profils juniors) a apprendre de facon structuree:
 
-## React Compiler
+- Linux et administration systeme
+- Git et collaboration
+- Containers et Kubernetes
+- CI/CD (Jenkins, GitLab CI, GitHub Actions)
+- Cloud et Infrastructure as Code
+- Monitoring, observabilite, securite
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Sections disponibles
 
-## Expanding the ESLint configuration
+- `Accueil`: orientation et parcours recommande
+- `Linux`: commandes, systemd, reseau, logs, scripts
+- `Git`: workflows et bonnes pratiques
+- `CI/CD`: concepts, strategies et outils
+- `Cloud`: fondamentaux cloud
+- `Infrastructure`: Terraform, Ansible et IaC
+- `Reseau`: DNS, proxy, load balancing
+- `Containers`: Docker, Kubernetes, Helm
+- `Monitoring`: Prometheus, Grafana, alerting
+- `Securite`: DevSecOps, secrets, RBAC
+- `Roadmap`: couverture complete des competences + plan 12 semaines
+- `Ressources`: docs officielles, formations, certifications
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Demarrage local
+
+Prerequis:
+
+- Node.js 18+
+- npm
+
+Installation et execution:
+
+```bash
+npm install
+npm run dev
+```
+
+Build de production:
+
+```bash
+npm run build
+npm run preview
+```
+
+## Vision de contenu complet
+
+Le site est pense comme un hub evolutif. Pour une couverture encore plus solide, la suite prevue:
+
+- exercices pratiques par section (labs)
+- quiz de validation des acquis
+- parcours par niveau (debutant, intermediaire, avance)
+- checklists "job-ready" par domaine
+
+## Stack technique
+
+- React + Vite
+- CSS vanilla
+- ESLint

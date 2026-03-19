@@ -11,6 +11,7 @@ import Monitoring from './components/Monitoring'
 import Security from './components/Security'
 import Containers from './components/Containers'
 import Resources from './components/Resources'
+import Roadmap from './components/Roadmap'
 
 function App() {
   const [activeSection, setActiveSection] = useState('home')
@@ -26,6 +27,7 @@ function App() {
     { id: 'containers', name: 'Containers', icon: '📦' },
     { id: 'monitoring', name: 'Monitoring', icon: '📊' },
     { id: 'security', name: 'Sécurité', icon: '🔒' },
+    { id: 'roadmap', name: 'Roadmap', icon: '🧭' },
     { id: 'resources', name: 'Ressources', icon: '📚' }
   ]
 
@@ -41,6 +43,7 @@ function App() {
       case 'containers': return <Containers />
       case 'monitoring': return <Monitoring />
       case 'security': return <Security />
+      case 'roadmap': return <Roadmap />
       case 'resources': return <Resources />
       default: return <Home />
     }

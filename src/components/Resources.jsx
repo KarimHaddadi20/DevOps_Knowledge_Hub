@@ -5,10 +5,12 @@ function Resources() {
       items: [
         { name: 'Docker Docs', url: 'https://docs.docker.com', desc: 'Documentation complète Docker' },
         { name: 'Kubernetes', url: 'https://kubernetes.io/docs', desc: 'Docs K8s' },
-        { name: 'Terraform', url: 'https://www.terraform.io/docs', desc: 'HashiCorp Terraform' },
+        { name: 'Terraform', url: 'https://developer.hashicorp.com/terraform/docs', desc: 'HashiCorp Terraform' },
         { name: 'Ansible', url: 'https://docs.ansible.com', desc: 'Documentation Ansible' },
         { name: 'Prometheus', url: 'https://prometheus.io/docs', desc: 'Monitoring' },
-        { name: 'AWS / Azure / GCP', url: '#', desc: 'Docs des 3 clouds majeurs' }
+        { name: 'AWS Documentation', url: 'https://docs.aws.amazon.com', desc: 'Documentation AWS' },
+        { name: 'Azure Documentation', url: 'https://learn.microsoft.com/azure', desc: 'Documentation Azure' },
+        { name: 'Google Cloud Documentation', url: 'https://cloud.google.com/docs', desc: 'Documentation GCP' }
       ]
     },
     {
