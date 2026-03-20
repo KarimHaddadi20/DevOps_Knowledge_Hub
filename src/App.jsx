@@ -12,9 +12,11 @@ import Security from './components/Security'
 import Containers from './components/Containers'
 import Resources from './components/Resources'
 import Roadmap from './components/Roadmap'
+import KnowledgeBase from './components/KnowledgeBase'
 
 function App() {
   const [activeSection, setActiveSection] = useState('home')
+  const [searchTerm, setSearchTerm] = useState('')
 
   const sections = [
     { id: 'home', name: 'Accueil', icon: '🏠' },
@@ -28,8 +30,14 @@ function App() {
     { id: 'monitoring', name: 'Monitoring', icon: '📊' },
     { id: 'security', name: 'Sécurité', icon: '🔒' },
     { id: 'roadmap', name: 'Roadmap', icon: '🧭' },
+    { id: 'knowledge', name: 'Base de connaissances', icon: '🧠' },
     { id: 'resources', name: 'Ressources', icon: '📚' }
   ]
+
+  const filteredSections = sections.filter(section => (
+    section.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    section.id.toLowerCase().includes(searchTerm.toLowerCase())
+  ))
 
   const renderContent = () => {
     switch(activeSection) {
@@ -44,6 +52,7 @@ function App() {
       case 'monitoring': return <Monitoring />
       case 'security': return <Security />
       case 'roadmap': return <Roadmap />
+      case 'knowledge': return <KnowledgeBase />
       case 'resources': return <Resources />
       default: return <Home />
     }
@@ -59,8 +68,17 @@ function App() {
       </header>
 
       <nav className="navbar">
+        <div className="search-wrapper">
+          <input
+            type="text"
+            className="search-input"
+            placeholder="Rechercher une section..."
+            value={searchTerm}
+            onChange={(event) => setSearchTerm(event.target.value)}
+          />
+        </div>
         <div className="navbar-container">
-          {sections.map(section => (
+          {filteredSections.map(section => (
             <button
               key={section.id}
               className={`nav-button ${activeSection === section.id ? 'active' : ''}`}
@@ -70,6 +88,9 @@ function App() {
               <span className="nav-text">{section.name}</span>
             </button>
           ))}
+          {filteredSections.length === 0 && (
+            <p className="search-empty">Aucune section trouvée.</p>
+          )}
         </div>
       </nav>
 

@@ -26,6 +26,7 @@ Ce projet aide les etudiants (et profils juniors) a apprendre de facon structure
 - `Monitoring`: Prometheus, Grafana, alerting
 - `Securite`: DevSecOps, secrets, RBAC
 - `Roadmap`: couverture complete des competences + plan 12 semaines
+- `Base de connaissances`: fondamentaux, sujets avances, runbooks, FAQ
 - `Ressources`: docs officielles, formations, certifications
 
 ## Demarrage local
