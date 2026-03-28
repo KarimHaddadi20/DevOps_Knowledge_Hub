@@ -52,7 +52,7 @@ function App() {
       case 'monitoring': return <Monitoring />
       case 'security': return <Security />
       case 'roadmap': return <Roadmap />
-      case 'knowledge': return <KnowledgeBase />
+      case 'knowledge': return <KnowledgeBase onNavigateToSection={setActiveSection} />
       case 'resources': return <Resources />
       default: return <Home />
     }
