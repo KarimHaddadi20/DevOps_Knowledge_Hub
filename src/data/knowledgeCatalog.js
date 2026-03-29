@@ -86,6 +86,30 @@ export const KB_INDEX_ENTRIES = [
     keywords: 'rbac secrets vault vulnerability scan sbom'
   },
   {
+    id: 'idx-sast-dast-sca',
+    title: 'SAST, DAST et SCA',
+    summary: 'Stratégie de scanning sécurité par phase: code, runtime et dépendances.',
+    sectionId: 'security',
+    tags: ['devsecops', 'security-gates'],
+    keywords: 'sast dast sca semgrep zap codeql trivy'
+  },
+  {
+    id: 'idx-policy-as-code',
+    title: 'Policy as Code',
+    summary: 'OPA, Kyverno et règles d’admission Kubernetes versionnées.',
+    sectionId: 'security',
+    tags: ['governance', 'kubernetes'],
+    keywords: 'opa gatekeeper kyverno admission policy'
+  },
+  {
+    id: 'idx-supply-chain',
+    title: 'Supply Chain Security',
+    summary: 'SBOM, signature d’artefacts, provenance build et vérification image.',
+    sectionId: 'security',
+    tags: ['supply-chain', 'integrity'],
+    keywords: 'sbom syft cosign slsa provenance signature'
+  },
+  {
     id: 'idx-roadmap',
     title: 'Roadmap & parcours d’apprentissage',
     summary: 'Compétences cibles, labs, plan sur plusieurs semaines, niveau job-ready.',
@@ -174,6 +198,17 @@ export const KB_RUNBOOKS = [
       'Ajuster requests/limits Kubernetes ou taille instance si légitime.',
       'Profiler l’application (heap, caches) ; corriger fuite si présente.',
       'Documenter la cause et les limites validées en production.'
+    ]
+  },
+  {
+    id: 'rb-security-token',
+    title: 'Fuite de token / secret',
+    severity: 'P1',
+    steps: [
+      'Révoquer immédiatement le token/secret compromis.',
+      'Auditer les logs pour identifier usage malveillant et périmètre.',
+      'Régénérer et redistribuer les secrets via un coffre sécurisé.',
+      'Ajouter détection précoce (secret scanning, policy CI, alertes).'
     ]
   }
 ];
