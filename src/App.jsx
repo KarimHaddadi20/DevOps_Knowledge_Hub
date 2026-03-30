@@ -1,5 +1,6 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import './App.css'
+import { getGlobalSearchResults } from './data/globalSearchIndex.js'
 import Home from './components/Home'
 import Linux from './components/Linux'
 import Git from './components/Git'
@@ -34,10 +35,12 @@ function App() {
     { id: 'resources', name: 'Ressources', icon: '📚' }
   ]
 
-  const filteredSections = sections.filter(section => (
-    section.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    section.id.toLowerCase().includes(searchTerm.toLowerCase())
-  ))
+  const globalResults = useMemo(
+    () => getGlobalSearchResults(searchTerm, { limit: 16 }),
+    [searchTerm]
+  )
+
+  const showGlobalPanel = searchTerm.trim().length >= 2
 
   const renderContent = () => {
     switch(activeSection) {
@@ -70,15 +73,49 @@ function App() {
       <nav className="navbar">
         <div className="search-wrapper">
           <input
-            type="text"
+            type="search"
             className="search-input"
-            placeholder="Rechercher une section..."
+            placeholder="Recherche globale : sections, fiches, runbooks…"
             value={searchTerm}
             onChange={(event) => setSearchTerm(event.target.value)}
+            onKeyDown={(event) => {
+              if (event.key === 'Escape') setSearchTerm('')
+            }}
+            aria-label="Recherche globale dans le hub"
+            autoComplete="off"
           />
+          {showGlobalPanel && (
+            <div className="global-search-panel" role="listbox" aria-label="Résultats de recherche">
+              {globalResults.length === 0 ? (
+                <p className="global-search-empty">Aucun résultat pour cette recherche.</p>
+              ) : (
+                globalResults.map((item) => (
+                  <button
+                    key={item.id}
+                    type="button"
+                    role="option"
+                    className="global-search-item"
+                    onMouseDown={(event) => event.preventDefault()}
+                    onClick={() => {
+                      setActiveSection(item.sectionId)
+                      setSearchTerm('')
+                    }}
+                  >
+                    <span className={`global-search-badge global-search-badge-${item.category}`}>
+                      {item.category === 'section' ? 'Section' : item.category === 'runbook' ? 'Runbook' : 'Fiche'}
+                    </span>
+                    <span className="global-search-item-title">{item.title}</span>
+                    {item.snippet ? (
+                      <span className="global-search-item-snippet">{item.snippet}</span>
+                    ) : null}
+                  </button>
+                ))
+              )}
+            </div>
+          )}
         </div>
         <div className="navbar-container">
-          {filteredSections.map(section => (
+          {sections.map(section => (
             <button
               key={section.id}
               className={`nav-button ${activeSection === section.id ? 'active' : ''}`}
@@ -88,9 +125,6 @@ function App() {
               <span className="nav-text">{section.name}</span>
             </button>
           ))}
-          {filteredSections.length === 0 && (
-            <p className="search-empty">Aucune section trouvée.</p>
-          )}
         </div>
       </nav>
 
