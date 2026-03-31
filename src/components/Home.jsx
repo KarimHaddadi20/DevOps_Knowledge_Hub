@@ -9,6 +9,7 @@ function Home() {
     { id: 'containers', name: 'Containers', icon: '📦', desc: 'Docker, Kubernetes, Helm, Ingress, HPA.' },
     { id: 'monitoring', name: 'Monitoring', icon: '📊', desc: 'Prometheus, Grafana, AlertManager, ELK, observabilité.' },
     { id: 'security', name: 'Sécurité', icon: '🔒', desc: 'Secrets, vulnérabilités, RBAC K8s, Network Policies.' },
+    { id: 'mustknow', name: 'Métier DevOps', icon: '🎯', desc: 'CALMS, piliers techniques, stack, SRE, soft skills, niveaux.' },
     { id: 'resources', name: 'Ressources', icon: '📚', desc: 'Documentations, formations, certifications, glossaire.' }
   ];
 
@@ -22,9 +23,10 @@ function Home() {
           pratiques et des exemples de code pour maîtriser les concepts essentiels du DevOps.
         </p>
         <p>
-          Utilisez la barre de navigation ci-dessus pour explorer chaque section. Chaque thème
-          contient des sous-onglets avec du contenu détaillé : commandes, exemples de config,
-          bonnes pratiques et schémas.
+          Utilisez la barre de navigation ci-dessus pour explorer chaque section. La page{' '}
+          <strong>Métier DevOps</strong> résume ce qu’un ingénieur DevOps est censé maîtriser
+          (culture, technique, exploitation, évolution de carrière). Chaque thème contient des sous-onglets :
+          commandes, exemples de config, bonnes pratiques.
         </p>
       </div>
 
@@ -44,6 +46,7 @@ function Home() {
           <li><strong>Réseau</strong> — DNS, proxy, load balancing</li>
           <li><strong>Monitoring</strong> — Observabilité et alerting</li>
           <li><strong>Sécurité</strong> — DevSecOps et gestion des secrets</li>
+          <li><strong>Métier DevOps</strong> — Vue d’ensemble des compétences attendues (voir section dédiée)</li>
         </ol>
       </div>
 

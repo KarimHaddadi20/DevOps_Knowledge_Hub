@@ -82,6 +82,14 @@ const SECTION_ENTRIES = [
     keywords: 'sécurité devsecops vault trivy rbac kyverno cosign sbom sast dast'
   },
   {
+    id: 'nav-mustknow',
+    title: 'Ce qu’un DevOps doit savoir',
+    snippet: 'Culture CALMS, piliers techniques, stack, SRE, soft skills, niveaux junior à senior.',
+    sectionId: 'mustknow',
+    category: 'section',
+    keywords: 'devops métier compétences savoir calms sre junior senior stack rôle job'
+  },
+  {
     id: 'nav-roadmap',
     title: 'Roadmap',
     snippet: 'Parcours d’apprentissage, compétences et plan sur plusieurs semaines.',

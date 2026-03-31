@@ -120,7 +120,9 @@ function Resources() {
           <strong>SLO/SLI/SLA</strong> — Objectifs de niveau de service<br />
           <strong>Blue/Green</strong> — Stratégie de déploiement avec bascule<br />
           <strong>Canary</strong> — Déploiement progressif<br />
-          <strong>DevSecOps</strong> — Sécurité intégrée au DevOps
+          <strong>DevSecOps</strong> — Sécurité intégrée au DevOps<br />
+          <strong>CALMS</strong> — Culture, Automation, Lean, Measurement, Sharing (culture DevOps)<br />
+          <strong>DORA</strong> — Indicateurs de performance livraison (cadence, stabilité, etc.)
         </div>
       </div>
 

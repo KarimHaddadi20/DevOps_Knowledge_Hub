@@ -110,6 +110,14 @@ export const KB_INDEX_ENTRIES = [
     keywords: 'sbom syft cosign slsa provenance signature'
   },
   {
+    id: 'idx-mustknow',
+    title: 'Ce qu’un DevOps doit savoir (métier)',
+    summary: 'Culture CALMS, 9 piliers techniques, stack type, exploitation, soft skills, profils junior à senior.',
+    sectionId: 'mustknow',
+    tags: ['métier', 'compétences', 'référentiel'],
+    keywords: 'devops compétences calms culture ci cd kubernetes cloud sre junior senior métier embauche'
+  },
+  {
     id: 'idx-roadmap',
     title: 'Roadmap & parcours d’apprentissage',
     summary: 'Compétences cibles, labs, plan sur plusieurs semaines, niveau job-ready.',

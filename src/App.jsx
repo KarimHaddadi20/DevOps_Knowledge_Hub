@@ -14,6 +14,7 @@ import Containers from './components/Containers'
 import Resources from './components/Resources'
 import Roadmap from './components/Roadmap'
 import KnowledgeBase from './components/KnowledgeBase'
+import DevOpsMustKnow from './components/DevOpsMustKnow'
 
 function App() {
   const [activeSection, setActiveSection] = useState('home')
@@ -30,6 +31,7 @@ function App() {
     { id: 'containers', name: 'Containers', icon: '📦' },
     { id: 'monitoring', name: 'Monitoring', icon: '📊' },
     { id: 'security', name: 'Sécurité', icon: '🔒' },
+    { id: 'mustknow', name: 'Métier DevOps', icon: '🎯' },
     { id: 'roadmap', name: 'Roadmap', icon: '🧭' },
     { id: 'knowledge', name: 'Base de connaissances', icon: '🧠' },
     { id: 'resources', name: 'Ressources', icon: '📚' }
@@ -54,6 +56,7 @@ function App() {
       case 'containers': return <Containers />
       case 'monitoring': return <Monitoring />
       case 'security': return <Security />
+      case 'mustknow': return <DevOpsMustKnow />
       case 'roadmap': return <Roadmap />
       case 'knowledge': return <KnowledgeBase onNavigateToSection={setActiveSection} />
       case 'resources': return <Resources />
