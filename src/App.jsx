@@ -165,7 +165,10 @@ function App() {
       </main>
 
       <footer className="footer">
-        <p>© 2025 DevOps Knowledge Hub - Pour les apprentis en Master DevOps, Infrastructure et Cloud</p>
+        <p>
+          © 2026 DevOps Knowledge Hub — Karim Haddadi — Pour les apprentis en Master DevOps,
+          Infrastructure et Cloud
+        </p>
       </footer>
     </div>
   )
