@@ -1,28 +1,141 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
 
-:root {
-  /* Fond très sombre, presque noir mais avec une teinte bleutée imperceptible */
+:root:not([data-theme="light"]),
+[data-theme="dark"] {
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
   --bg-primary: #040404;
   --bg-secondary: #0A0A0A;
   --bg-tertiary: #111111;
-  
-  /* Bordures subtiles */
+
   --border-subtle: #1f1f1f;
   --border-light: #2a2a2a;
   --border-highlight: #404040;
 
-  /* Texte */
   --text-primary: #EDEDED;
   --text-secondary: #A1A1A1;
   --text-tertiary: #666666;
 
-  /* Accents Cursor-like (Bleu/Violet électrique très subtil) */
-  --accent-glow: rgba(56, 189, 248, 0.15); /* Bleu ciel très léger */
+  --accent-glow: rgba(56, 189, 248, 0.15);
   --accent-primary: #38bdf8;
-  
+  --accent-hover: #7dd3fc;
+
+  --header-bg: rgba(4, 4, 4, 0.7);
+  --navbar-bg: rgba(10, 10, 10, 0.5);
+  --input-bg: #0d0d0d;
+  --panel-bg: rgba(12, 12, 12, 0.98);
+  --panel-shadow: 0 16px 48px rgba(0, 0, 0, 0.55);
+  --search-item-hover: rgba(56, 189, 248, 0.08);
+
+  --logo-badge-bg: #222;
+  --logo-badge-border: #333;
+  --logo-badge-color: #888;
+
+  --card-bg-grad-start: rgba(20, 20, 20, 0.6);
+  --card-bg-grad-end: rgba(10, 10, 10, 0.4);
+  --card-hover-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  --card-top-line: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+
+  --heading-grad-start: #fff;
+  --heading-grad-end: #aaa;
+
+  --code-bg: #0d0d0d;
+  --code-text: #e5e5e5;
+  --diagram-bg: #080808;
+
+  --schema-grad-top: #1a1a1a;
+  --schema-grad-bottom: #0d0d0d;
+  --schema-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+
+  --inline-code-bg: rgba(255, 255, 255, 0.08);
+
+  --kb-muted-surface: rgba(255, 255, 255, 0.03);
+  --kb-runbook-bg: rgba(0, 0, 0, 0.25);
+  --kb-tab-bg: rgba(255, 255, 255, 0.04);
+  --kb-tab-active-bg: rgba(56, 189, 248, 0.08);
+  --kb-tab-active-border: rgba(56, 189, 248, 0.45);
+  --kb-faq-bg: rgba(255, 255, 255, 0.02);
+
+  --nav-active-line-shadow: 0 -2px 10px rgba(255, 255, 255, 0.5);
+
+  --body-grid-line: rgba(255, 255, 255, 0.03);
+  --scrollbar-thumb: #333;
+
+  --badge-section-color: #7dd3fc;
+  --badge-fiche-color: #6ee7b7;
+  --badge-runbook-color: #fcd34d;
+
+  color-scheme: dark;
+}
+
+[data-theme="light"] {
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  --bg-primary: #f4f6f9;
+  --bg-secondary: #eef1f6;
+  --bg-tertiary: #e2e8f0;
+
+  --border-subtle: #dce3ed;
+  --border-light: #cbd5e1;
+  --border-highlight: #94a3b8;
+
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-tertiary: #64748b;
+
+  --accent-glow: rgba(2, 132, 199, 0.12);
+  --accent-primary: #0284c7;
+  --accent-hover: #0369a1;
+
+  --header-bg: rgba(255, 255, 255, 0.88);
+  --navbar-bg: rgba(255, 255, 255, 0.78);
+  --input-bg: #ffffff;
+  --panel-bg: #ffffff;
+  --panel-shadow: 0 16px 48px rgba(15, 23, 42, 0.12);
+  --search-item-hover: rgba(2, 132, 199, 0.1);
+
+  --logo-badge-bg: #f1f5f9;
+  --logo-badge-border: #cbd5e1;
+  --logo-badge-color: #64748b;
+
+  --card-bg-grad-start: rgba(255, 255, 255, 0.98);
+  --card-bg-grad-end: rgba(248, 250, 252, 0.95);
+  --card-hover-shadow: 0 8px 32px rgba(15, 23, 42, 0.08);
+  --card-top-line: linear-gradient(90deg, transparent, rgba(15, 23, 42, 0.08), transparent);
+
+  --heading-grad-start: #0f172a;
+  --heading-grad-end: #64748b;
+
+  --code-bg: #f1f5f9;
+  --code-text: #1e293b;
+  --diagram-bg: #f8fafc;
+
+  --schema-grad-top: #ffffff;
+  --schema-grad-bottom: #f1f5f9;
+  --schema-box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+
+  --inline-code-bg: rgba(15, 23, 42, 0.07);
+
+  --kb-muted-surface: rgba(15, 23, 42, 0.04);
+  --kb-runbook-bg: rgba(241, 245, 249, 0.95);
+  --kb-tab-bg: rgba(255, 255, 255, 0.95);
+  --kb-tab-active-bg: rgba(2, 132, 199, 0.1);
+  --kb-tab-active-border: rgba(2, 132, 199, 0.45);
+  --kb-faq-bg: rgba(15, 23, 42, 0.03);
+
+  --nav-active-line-shadow: 0 -2px 12px rgba(2, 132, 199, 0.28);
+
+  --body-grid-line: rgba(15, 23, 42, 0.06);
+  --scrollbar-thumb: #94a3b8;
+
+  --badge-section-color: #0369a1;
+  --badge-fiche-color: #047857;
+  --badge-runbook-color: #b45309;
+
+  color-scheme: light;
 }
 
 * {
@@ -38,7 +151,6 @@ body {
   line-height: 1.6;
 }
 
-/* Effet de grille en fond (très subtil) */
 body::before {
   content: "";
   position: fixed;
@@ -47,8 +159,8 @@ body::before {
   width: 100%;
   height: 100%;
   background-image: 
-    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    linear-gradient(var(--body-grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--body-grid-line) 1px, transparent 1px);
   background-size: 50px 50px;
   pointer-events: none;
   z-index: -1;
@@ -65,7 +177,6 @@ code {
   font-family: var(--font-mono);
 }
 
-/* Scrollbar invisible mais fonctionnelle */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -74,6 +185,6 @@ code {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: #333;
+  background: var(--scrollbar-thumb);
   border-radius: 3px;
 }

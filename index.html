@@ -16,6 +16,21 @@
     />
     <meta property="og:type" content="website" />
     <title>DevOps Knowledge Hub</title>
+    <script>
+      (function () {
+        try {
+          var k = 'devops-hub-theme';
+          var s = localStorage.getItem(k);
+          var t =
+            s === 'light' || s === 'dark'
+              ? s
+              : window.matchMedia('(prefers-color-scheme: light)').matches
+                ? 'light'
+                : 'dark';
+          document.documentElement.setAttribute('data-theme', t);
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

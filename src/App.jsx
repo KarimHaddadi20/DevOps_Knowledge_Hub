@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import './App.css'
 import { getGlobalSearchResults } from './data/globalSearchIndex.js'
 import Home from './components/Home'
@@ -16,9 +16,28 @@ import Roadmap from './components/Roadmap'
 import KnowledgeBase from './components/KnowledgeBase'
 import DevOpsMustKnow from './components/DevOpsMustKnow'
 
+const THEME_STORAGE_KEY = 'devops-hub-theme'
+
+function readInitialTheme() {
+  if (typeof window === 'undefined') return 'dark'
+  const stored = window.localStorage.getItem(THEME_STORAGE_KEY)
+  if (stored === 'light' || stored === 'dark') return stored
+  return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'
+}
+
 function App() {
   const [activeSection, setActiveSection] = useState('home')
   const [searchTerm, setSearchTerm] = useState('')
+  const [theme, setTheme] = useState(readInitialTheme)
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme)
+    try {
+      window.localStorage.setItem(THEME_STORAGE_KEY, theme)
+    } catch {
+      /* ignore */
+    }
+  }, [theme])
 
   const sections = [
     { id: 'home', name: 'Accueil', icon: '🏠' },
@@ -70,6 +89,16 @@ function App() {
         <div className="header-content">
           <h1 className="logo">🚀 DevOps Knowledge Hub</h1>
           <p className="subtitle">Centre de ressources pour étudiants Master DevOps & Cloud</p>
+          <button
+            type="button"
+            className="theme-toggle"
+            onClick={() => setTheme((t) => (t === 'light' ? 'dark' : 'light'))}
+            aria-pressed={theme === 'light'}
+            aria-label={theme === 'light' ? 'Passer en mode sombre' : 'Passer en mode clair'}
+          >
+            <span aria-hidden>{theme === 'light' ? '🌙' : '☀️'}</span>
+            <span className="theme-toggle-label">{theme === 'light' ? 'Sombre' : 'Clair'}</span>
+          </button>
         </div>
       </header>
 
