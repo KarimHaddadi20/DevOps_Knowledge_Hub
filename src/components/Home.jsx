@@ -10,6 +10,8 @@ function Home() {
     { id: 'monitoring', name: 'Monitoring', icon: '📊', desc: 'Prometheus, Grafana, AlertManager, ELK, observabilité.' },
     { id: 'security', name: 'Sécurité', icon: '🔒', desc: 'Secrets, vulnérabilités, RBAC K8s, Network Policies.' },
     { id: 'mustknow', name: 'Métier DevOps', icon: '🎯', desc: 'CALMS, piliers techniques, stack, SRE, soft skills, niveaux.' },
+    { id: 'roadmap', name: 'Roadmap', icon: '🧭', desc: 'Parcours structuré, compétences cibles, labs et plan sur plusieurs semaines.' },
+    { id: 'knowledge', name: 'Base de connaissances', icon: '🧠', desc: 'Index thématique, recherche, cycle de vie, runbooks et FAQ.' },
     { id: 'resources', name: 'Ressources', icon: '📚', desc: 'Documentations, formations, certifications, glossaire.' }
   ];
 
@@ -23,10 +25,12 @@ function Home() {
           pratiques et des exemples de code pour maîtriser les concepts essentiels du DevOps.
         </p>
         <p>
-          Utilisez la barre de navigation ci-dessus pour explorer chaque section. La page{' '}
-          <strong>Métier DevOps</strong> résume ce qu’un ingénieur DevOps est censé maîtriser
-          (culture, technique, exploitation, évolution de carrière). Chaque thème contient des sous-onglets :
-          commandes, exemples de config, bonnes pratiques.
+          Utilisez la barre de navigation ci-dessus pour explorer chaque section. La{' '}
+          <strong>recherche globale</strong> (au moins 2 caractères) parcourt sections, fiches et runbooks.
+          Les pages <strong>Roadmap</strong> et <strong>Base de connaissances</strong> structurent le parcours et
+          l’accès rapide aux sujets. La page <strong>Métier DevOps</strong> résume ce qu’un ingénieur DevOps est
+          censé maîtriser (culture, technique, exploitation). Chaque thème contient des sous-onglets : commandes,
+          exemples de config, bonnes pratiques.
         </p>
       </div>
 
@@ -46,6 +50,8 @@ function Home() {
           <li><strong>Réseau</strong> — DNS, proxy, load balancing</li>
           <li><strong>Monitoring</strong> — Observabilité et alerting</li>
           <li><strong>Sécurité</strong> — DevSecOps et gestion des secrets</li>
+          <li><strong>Roadmap</strong> — Parcours d’apprentissage et objectifs par étape</li>
+          <li><strong>Base de connaissances</strong> — Index, runbooks et recherche globale dans le hub</li>
           <li><strong>Métier DevOps</strong> — Vue d’ensemble des compétences attendues (voir section dédiée)</li>
         </ol>
       </div>
@@ -83,6 +89,7 @@ function Home() {
         <ul style={{ lineHeight: 2, color: 'var(--text-secondary)' }}>
           <li>Les blocs de code sont copiables — utilisez-les comme base pour vos projets</li>
           <li>Consultez la section <strong>Ressources</strong> pour les documentations officielles et formations</li>
+          <li>Utilisez le bouton <strong>Clair / Sombre</strong> en haut à droite selon votre confort de lecture</li>
           <li>Pratiquez en local avec Docker ou une VM avant de passer au cloud</li>
         </ul>
       </div>
