@@ -15,6 +15,7 @@ import Resources from './components/Resources'
 import Roadmap from './components/Roadmap'
 import KnowledgeBase from './components/KnowledgeBase'
 import DevOpsMustKnow from './components/DevOpsMustKnow'
+import SkillMap from './components/SkillMap'
 
 const THEME_STORAGE_KEY = 'devops-hub-theme'
 
@@ -51,6 +52,7 @@ function App() {
     { id: 'monitoring', name: 'Monitoring', icon: '📊' },
     { id: 'security', name: 'Sécurité', icon: '🔒' },
     { id: 'mustknow', name: 'Métier DevOps', icon: '🎯' },
+    { id: 'skillmap', name: 'Carte des compétences', icon: '🗺️' },
     { id: 'roadmap', name: 'Roadmap', icon: '🧭' },
     { id: 'knowledge', name: 'Base de connaissances', icon: '🧠' },
     { id: 'resources', name: 'Ressources', icon: '📚' }
@@ -76,6 +78,7 @@ function App() {
       case 'monitoring': return <Monitoring />
       case 'security': return <Security />
       case 'mustknow': return <DevOpsMustKnow />
+      case 'skillmap': return <SkillMap onNavigate={setActiveSection} />
       case 'roadmap': return <Roadmap />
       case 'knowledge': return <KnowledgeBase onNavigateToSection={setActiveSection} />
       case 'resources': return <Resources />
