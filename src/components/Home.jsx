@@ -1,4 +1,4 @@
-function Home() {
+function Home({ onNavigate, visited = new Set() }) {
   const sections = [
     { id: 'linux', name: 'Linux', icon: '🐧', desc: 'FHS, commandes, permissions, systemd, logs, firewall, scripting Bash.' },
     { id: 'git', name: 'Git', icon: '📂', desc: 'Branches, merge, rebase, remote, workflows, conventional commits.' },
@@ -15,6 +15,8 @@ function Home() {
     { id: 'resources', name: 'Ressources', icon: '📚', desc: 'Documentations, formations, certifications, glossaire.' }
   ];
 
+  const visitedCount = sections.filter(s => visited.has(s.id)).length
+
   return (
     <div>
       <div className="card">
@@ -28,10 +30,23 @@ function Home() {
           Utilisez la barre de navigation ci-dessus pour explorer chaque section. La{' '}
           <strong>recherche globale</strong> (au moins 2 caractères) parcourt sections, fiches et runbooks.
           Les pages <strong>Roadmap</strong> et <strong>Base de connaissances</strong> structurent le parcours et
-          l’accès rapide aux sujets. La page <strong>Métier DevOps</strong> résume ce qu’un ingénieur DevOps est
-          censé maîtriser (culture, technique, exploitation). Chaque thème contient des sous-onglets : commandes,
-          exemples de config, bonnes pratiques.
+          l'accès rapide aux sujets. La page <strong>Métier DevOps</strong> résume ce qu'un ingénieur DevOps est
+          censé maîtriser (culture, technique, exploitation).
         </p>
+        {visitedCount > 0 && (
+          <div className="home-progress-bar-wrap">
+            <div className="home-progress-bar-label">
+              <span>Progression</span>
+              <span className="home-progress-bar-count">{visitedCount} / {sections.length} sections explorées</span>
+            </div>
+            <div className="home-progress-bar-track">
+              <div
+                className="home-progress-bar-fill"
+                style={{ width: `${(visitedCount / sections.length) * 100}%` }}
+              />
+            </div>
+          </div>
+        )}
       </div>
 
       <div className="card">
@@ -50,47 +65,47 @@ function Home() {
           <li><strong>Réseau</strong> — DNS, proxy, load balancing</li>
           <li><strong>Monitoring</strong> — Observabilité et alerting</li>
           <li><strong>Sécurité</strong> — DevSecOps et gestion des secrets</li>
-          <li><strong>Roadmap</strong> — Parcours d’apprentissage et objectifs par étape</li>
+          <li><strong>Roadmap</strong> — Parcours d'apprentissage et objectifs par étape</li>
           <li><strong>Base de connaissances</strong> — Index, runbooks et recherche globale dans le hub</li>
-          <li><strong>Métier DevOps</strong> — Vue d’ensemble des compétences attendues (voir section dédiée)</li>
+          <li><strong>Métier DevOps</strong> — Vue d'ensemble des compétences attendues</li>
         </ol>
       </div>
 
       <div className="card">
         <h3>📂 Contenu par section</h3>
-        <div className="grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))' }}>
-          {sections.map(section => (
-            <div
-              key={section.id}
-              className="card"
-              style={{
-                background: 'rgba(255,255,255,0.02)',
-                border: '1px solid var(--border-subtle)',
-                padding: '1.25rem',
-                margin: 0,
-                height: '100%',
-                transition: 'border-color 0.2s'
-              }}
-            >
-              <h4 style={{ margin: '0 0 0.5rem', fontSize: '1.1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <span>{section.icon}</span>
-                {section.name}
-              </h4>
-              <p style={{ margin: 0, fontSize: '0.9rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
-                {section.desc}
-              </p>
-            </div>
-          ))}
+        <div className="home-sections-grid">
+          {sections.map(section => {
+            const isVisited = visited.has(section.id)
+            return (
+              <button
+                key={section.id}
+                type="button"
+                className={`home-section-card${isVisited ? ' home-section-card--visited' : ''}`}
+                onClick={() => onNavigate?.(section.id)}
+              >
+                <div className="home-section-card-top">
+                  <span className="home-section-icon">{section.icon}</span>
+                  <span className="home-section-name">{section.name}</span>
+                  {isVisited && (
+                    <span className="home-section-visited-dot" title="Section visitée" aria-label="Visitée" />
+                  )}
+                </div>
+                <p className="home-section-desc">{section.desc}</p>
+                <span className="home-section-cta">Explorer →</span>
+              </button>
+            )
+          })}
         </div>
       </div>
 
       <div className="card">
         <h3>💡 Conseils</h3>
         <ul style={{ lineHeight: 2, color: 'var(--text-secondary)' }}>
-          <li>Les blocs de code sont copiables — utilisez-les comme base pour vos projets</li>
+          <li>Les blocs de code ont un bouton <strong>Copier</strong> — utilisez-les comme base pour vos projets</li>
           <li>Consultez la section <strong>Ressources</strong> pour les documentations officielles et formations</li>
           <li>Utilisez le bouton <strong>Clair / Sombre</strong> en haut à droite selon votre confort de lecture</li>
           <li>Pratiquez en local avec Docker ou une VM avant de passer au cloud</li>
+          <li>Le badge <strong>X/14</strong> en haut à droite suit votre progression dans le hub</li>
         </ul>
       </div>
     </div>
